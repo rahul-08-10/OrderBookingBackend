@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
                 message: "User Already Exist"
             });
         }
-        const hashedPassword = bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await userData.create({
             name,
             email,
@@ -79,6 +79,7 @@ const getUser = async (req, res) => {
         })
     }
 }
+
 
 const updateUser = async (req, res) => {
     const { id } = req.body;
